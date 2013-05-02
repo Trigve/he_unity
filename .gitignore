@@ -1,0 +1,13 @@
+# Unity project files
+obj
+Temp
+*.suo
+*.user
+*.pidb
+*.userprefs
+# Unity files
+Library/
+bin/
+*.csproj
+*.sln
+*.unityproj
