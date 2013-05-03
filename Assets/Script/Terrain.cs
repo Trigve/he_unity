@@ -22,7 +22,6 @@ public sealed class Terrain : MonoBehaviour
 #region Operations
 	public void CreatePartition(int X, int Y, MapInstance Map, TerrainTileSet TileSet, Material Mat)
 	{
-//		TerrainTileSet tile_set = MatManager.GetTerrainSet(Map.map.terrainName);
 		// Create terrain partition
 		terrainPartition = new he.TerrainPartition();
 		Mesh mesh = terrainPartition.Create(X, Y, Map, TileSet);
@@ -31,7 +30,6 @@ public sealed class Terrain : MonoBehaviour
 		GetComponent<MeshCollider>().sharedMesh = mesh;
 		var mesh_renderer = gameObject.GetComponent<MeshRenderer>();
 		// Set map material
-//		mesh_renderer.sharedMaterial = Resources.Load("Materials/" + tile_set.materialName, typeof(Material)) as Material;
 		mesh_renderer.sharedMaterial = Mat;
 	}
 	//! Get tile for given triangle.
