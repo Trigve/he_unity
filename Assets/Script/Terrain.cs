@@ -24,7 +24,7 @@ public sealed class Terrain : MonoBehaviour
 	{
 		// Create terrain partition
 		terrainPartition = new he.TerrainPartition();
-		Mesh mesh = terrainPartition.Create(X, Y, Map, TileSet);
+		Mesh mesh = terrainPartition.Create(X, Y, Map.map, TileSet);
 		// Add needed components
 		GetComponent<MeshFilter>().mesh = mesh;
 		GetComponent<MeshCollider>().sharedMesh = mesh;
