@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteManager.cs" />
+    <Compile Include="UnitSoldierController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\he\he.csproj">
