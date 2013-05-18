@@ -42,12 +42,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISpriteManager.cs" />
     <Compile Include="ITerrainManager.cs" />
     <Compile Include="LookDirection.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SoldierManager.cs" />
     <Compile Include="TerrainMaterialManager.cs" />
     <Compile Include="TerrainPartition.cs" />
     <Compile Include="TerrainTile.cs" />
