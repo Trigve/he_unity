@@ -13,14 +13,14 @@ public class LevelManager : MonoBehaviourEx
 	private GameCursor cursor;
 	//! Hover cursor.
 	private GameObject hover;
-	//! Selected mercenary.
-	private GameObject soldierSelected;
 	//! Terrain manager.
 	private TerrainManager terrainManager;
-	//! Path manager.
-	private AStarPathManager pathManager;
 	//! Path visualizer.
 	private PathVisualizer pathVisualizer;
+	//! Soldier manager.
+	public SoldierManager soldierManager;
+	//! Sprite manager.
+	private SpriteManager spriteManager;
 #endregion
 
 #region Properies
@@ -38,31 +38,12 @@ public class LevelManager : MonoBehaviourEx
 	void Awake()
 	{
 		terrainManager = GameObject.Find("Map").GetComponent<TerrainManager>();
-		// Create A* path manager and GO
-		pathManager = PrefabManager.Create("AStartPathManager").GetComponent<AStarPathManager>();
-		pathManager.transform.parent = transform;
-
-		// Instantiate cursor if not found
-		GameObject cursor_go;
-		if ((cursor_go = GameObject.Find("Cursor")) == null)
-		{
-			var prefab_class = Resources.Load("Prefabs/Cursor", typeof(GameObject));
-			cursor_go = (GameObject)Instantiate(prefab_class);
-			cursor_go.name = prefab_class.name;
-			// Save it
-			cursor = cursor_go.GetComponent<GameCursor>();
-		}
-		// Instantiate hover
-		if ((hover = GameObject.Find("Hover")) == null)
-		{
-			var prefab_class = Resources.Load("Prefabs/Hover", typeof(GameObject));
-			hover = (GameObject)Instantiate(prefab_class);
-			hover.name = prefab_class.name;
-		}
-		// Create path visulizer child GO and get main component
-		var path_visualizer_go = PrefabManager.Create("PathVisualizer");
-		path_visualizer_go.transform.parent = transform;
-		pathVisualizer = path_visualizer_go.GetComponent<PathVisualizer>();
+		// Create sprite manager
+		var sprite_manager_go = PrefabManager.Create("SpriteManager");
+		sprite_manager_go.transform.parent = transform;
+		spriteManager = sprite_manager_go.GetComponent<SpriteManager>();
+		// Create soldier manager
+		soldierManager = new SoldierManager("data/units/human/", terrainManager.map, spriteManager, terrainManager);
 	}
 
 	void Update()
