@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 
 [Serializable]
-public class TerrainManager : MonoBehaviour
+public class TerrainManager : MonoBehaviour, he.ITerrainManager
 {
 #region Constants
 	//! Partition name.

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ISpriteManager.cs" />
+    <Compile Include="ITerrainManager.cs" />
     <Compile Include="LookDirection.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
