@@ -43,29 +43,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="he\ISpriteManager.cs" />
-    <Compile Include="he\LookDirection.cs" />
-    <Compile Include="he\Map.cs" />
-    <Compile Include="he\SoldierManager.cs" />
-    <Compile Include="he\TerrainMaterialManager.cs" />
-    <Compile Include="he\TerrainPartition.cs" />
-    <Compile Include="he\TerrainTile.cs" />
-    <Compile Include="he\TerrainTileSet.cs" />
-    <Compile Include="he\TerrainTileSplat.cs" />
-    <Compile Include="he\TextureAtlasInfo.cs" />
-    <Compile Include="he\TilePosition.cs" />
-    <Compile Include="he\Unit.cs" />
-    <Compile Include="he\UnitSoldier.cs" />
-    <Compile Include="he\UnitSpriteAnimationDescription.cs" />
-    <Compile Include="he\UnitSpriteAnimationFrameDescription.cs" />
-    <Compile Include="he\UnitSpriteAnimationOrientationDescription.cs" />
-    <Compile Include="he\UnitSpriteDescription.cs" />
-    <Compile Include="he\UnitSpriteManager.cs" />
-    <Compile Include="he\UnitSpriteTypeDescription.cs" />
+    <Compile Include="ISpriteManager.cs" />
+    <Compile Include="LookDirection.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Compile Include="SoldierManager.cs" />
+    <Compile Include="TerrainMaterialManager.cs" />
+    <Compile Include="TerrainPartition.cs" />
+    <Compile Include="TerrainTile.cs" />
+    <Compile Include="TerrainTileSet.cs" />
+    <Compile Include="TerrainTileSplat.cs" />
+    <Compile Include="TextureAtlasInfo.cs" />
+    <Compile Include="TilePosition.cs" />
+    <Compile Include="Unit.cs" />
+    <Compile Include="UnitSoldier.cs" />
+    <Compile Include="UnitSpriteAnimationDescription.cs" />
+    <Compile Include="UnitSpriteAnimationFrameDescription.cs" />
+    <Compile Include="UnitSpriteAnimationOrientationDescription.cs" />
+    <Compile Include="UnitSpriteDescription.cs" />
+    <Compile Include="UnitSpriteManager.cs" />
+    <Compile Include="UnitSpriteTypeDescription.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
