@@ -14,9 +14,9 @@ namespace he
 	{
 #region Attributes
 		//! Tile.
-		TerrainTile tile;
+		public TerrainTile tile;
 		//! Sector within given tile.
-		TileSector sector;
+		public TileSector sector;
 #endregion
 
 #region Construction
