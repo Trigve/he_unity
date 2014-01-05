@@ -3,3 +3,4 @@ text=auto
 *.meta text eol=lf
 *.prefab text eol=lf
 *.asset eol=lf
+*.material eol=lf
