@@ -4,3 +4,4 @@ text=auto
 *.prefab text eol=lf
 *.asset eol=lf
 *.material eol=lf
+*.mat eol=lf

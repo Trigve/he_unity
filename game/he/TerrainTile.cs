@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Xml;
 
 namespace he
 {
@@ -28,12 +29,10 @@ namespace he
 		private const byte VERTEX_COUNT = 4;
 		#endregion
 
-#region Attributes
+#region Fields
 		//! X.
-		[SerializeField]
 		private int m_x;
 		//! Y.
-		[SerializeField]
 		private int m_y;
 		//! Type variant index.
 		/*!
@@ -44,16 +43,35 @@ namespace he
 		/*!
 			Maximum of 2 different type per tile could be specified which will be blended together.
 		*/
-		[SerializeField]
 		private byte[] terrainTypeArray;
 		//! Terrain type.
-		[SerializeField]
 		private Type type_;
 #endregion
 
 #region Properties
 		public int x { get { return m_x; } private set { m_x = value; } }
 		public int y { get { return m_y; } private set { m_y = value; } }
+#endregion
+
+#region Save/Load
+		//! Save to xml.
+		public void SaveXml(XmlWriter Writer)
+		{
+			Writer.WriteStartElement("tile");
+
+			Writer.WriteAttributeString("x", m_x.ToString());
+			Writer.WriteAttributeString("y", m_y.ToString());
+			Writer.WriteAttributeString("variant", variant.ToString());
+
+			Writer.WriteAttributeString("type_0", terrainTypeArray[0].ToString());
+			Writer.WriteAttributeString("type_1", terrainTypeArray[1].ToString());
+			Writer.WriteAttributeString("type_2", terrainTypeArray[2].ToString());
+			Writer.WriteAttributeString("type_3", terrainTypeArray[3].ToString());
+
+			Writer.WriteAttributeString("type", ((ushort)type_).ToString());
+
+			Writer.WriteEndElement();
+		}
 #endregion
 
 #region Operations
@@ -76,12 +94,13 @@ namespace he
 #endregion
 
 #region Construction
-		public TerrainTile(int X, int Y, Type Type_)
+		public TerrainTile(int X, int Y, Type Type_, byte Variant)
 		{
 			x = X;
 			y = Y;
 			terrainTypeArray = new byte[4];
 			type_ = Type_;
+			variant = Variant;
 		}
 #endregion
 	}

@@ -1,46 +1,112 @@
-using UnityEditor;
-using UnityEngine;
-using System.Collections;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Xml;
+using UnityEngine;
+using UnityEditor;
 
 public class MapWindow : EditorWindow
 {
-	private int m_Width = 10;
-	private int m_Height = 20;
+#region Constants
+#endregion
+
+	private int m_Width = 2;
+	private int m_Height = 4;
 	
 	[MenuItem("Map/Create")]
 	static void ShowWindow()
 	{
 		// Show only if map doesn't exist
-		if(!GameObject.Find("Map"))
-			EditorWindow.GetWindow(typeof(MapWindow));
+		EditorWindow.GetWindow(typeof(MapWindow));
 	}
 
+	[MenuItem("Map/Load from xml")]
+	static void LoadFromXml()
+	{
+		var level_manager = GameObject.Find("LevelManager").GetComponent<he.script.LevelManager>();
+		ClearTerrain(level_manager.terrainManager);
+
+		// Generate xml scene name
+		string current_scene_xml = EditorApplication.currentScene.Substring(0, EditorApplication.currentScene.LastIndexOf(".")) + ".xml";
+		var xml_reader = XmlReader.Create(current_scene_xml);
+		xml_reader.Read();
+
+		level_manager.LoadXml(xml_reader, new AssetDatabaseCustom());
+		// Create all assets
+		level_manager.CreateAssets(GetCurrentScenePath() + "/", new AssetDatabaseCustom());
+	}
+
+#region Operations
+	//! Delete the active terrain manager stuff.
+	private static void ClearTerrain(he.script.TerrainManager Terrain)
+	{
+		// Get ALL terrain partitions, not only referenced (there could
+		// be the one left when some error occurred during destroying it,
+		// and aren't referenced inside terrain manager anywhere).
+		var terrain_partitions_all = Terrain.GetComponentsInChildren<he.script.TerrainPartition>();
+		foreach (var terrain_partition in terrain_partitions_all)
+		{
+			// Destroy mesh as first
+			AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(terrain_partition.GetComponent<MeshFilter>().sharedMesh));
+			// Destroy GO
+			GameObject.DestroyImmediate(terrain_partition.gameObject);
+		}
+	}
+
+	//! Get current scene path.
+	private static string GetCurrentScenePath()
+	{
+		string current_scene = EditorApplication.currentScene;
+		string current_scene_path = current_scene.Substring(0, current_scene.LastIndexOf('/'));
+		current_scene_path = current_scene_path.Substring(current_scene_path.LastIndexOf('/') + 1);
+
+		string asset_parent_path = "Assets/Scenes";
+		string asset_path = asset_parent_path + "/" + current_scene_path;
+
+		return asset_path;
+	}
+#endregion
+#region Messages
 	// Use this for initialization
 	void OnGUI ()
 	{
 		EditorGUILayout.PrefixLabel("Map Settings", EditorStyles.boldLabel);
 		// Add Width, height controls
 		m_Width = (int)EditorGUILayout.IntField("Width", m_Width);
-		m_Height = (int)EditorGUILayout.IntField("Hieght", m_Height);
+		m_Height = (int)EditorGUILayout.IntField("Height", m_Height);
 		
 		if(GUILayout.Button("Create"))
 		{
-			// Create map GO
-			GameObject map_go = new GameObject("Map");
-			// Reset position
-			map_go.transform.position.Set(0, 0, 0);
-			// Add terrain component
-			TerrainManager terrain_manager = map_go.AddComponent<TerrainManager>();
-			// Create map
-			var map = new he.Map(m_Width, m_Height, "summer");
+			var level_manager = GameObject.Find("LevelManager").GetComponent<he.script.LevelManager>();
+			// If we got some terrain already created, destroy it
+			if (level_manager.terrainManager != null)
+				ClearTerrain(level_manager.terrainManager);
+
+			// Get current scene path
+			string current_scene = EditorApplication.currentScene;
+			string current_scene_path = current_scene.Substring(0, current_scene.LastIndexOf('/'));
+			current_scene_path = current_scene_path.Substring(current_scene_path.LastIndexOf('/') + 1);
 			// Material manager
 			var material_manager = new he.TerrainMaterialManager(Application.dataPath);
-			he.TerrainTileSet tile_set = material_manager.GetTerrainSet(map.terrainName);
-			// Load material
-			var material = (Material)Resources.LoadAssetAtPath("Assets/Materials/" + tile_set.materialName + ".mat", typeof(Material));
-			// Create terrain
-			terrain_manager.CreateTerrain(map, tile_set, material);
+			
+//			string asset_parent_path = "Assets/Resources/Scenes";
+			string asset_parent_path = "Assets/Scenes";
+			string asset_path = GetCurrentScenePath();
+			// Be sure asset path exist
+			string asset_path_guid = AssetDatabase.AssetPathToGUID(asset_path);
+			if(asset_path_guid.Length == 0)
+				AssetDatabase.CreateFolder(asset_parent_path, current_scene_path);
+			// Create terrain manager and all partitions
+			var tile_set = material_manager.GetTerrainSet("summer");
+			level_manager.terrainManager.This((ushort)m_Width, (ushort)m_Height, tile_set);
+			// Create all assets
+			level_manager.CreateAssets(asset_path + "/", new AssetDatabaseCustom());
+
+			// Terrain manager has changed
+			EditorUtility.SetDirty(level_manager.terrainManager);
+			// Refresh asset database because of terrain were added there
+			AssetDatabase.Refresh();
 		}
 	}
+#endregion
 }

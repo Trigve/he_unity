@@ -2,8 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "he", "he\he.csproj", "{407573AE-80D1-46A1-A2BA-9DB4B5F06977}"
+	ProjectSection(ProjectDependencies) = postProject
+		{578C5276-E902-4CEB-9AF3-D1AEEE375F38} = {578C5276-E902-4CEB-9AF3-D1AEEE375F38}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "script", "script\script.csproj", "{05E5FBBA-724B-43E7-80E0-A347E71E51F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "utils", "utils\utils.csproj", "{578C5276-E902-4CEB-9AF3-D1AEEE375F38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +24,10 @@ Global
 		{05E5FBBA-724B-43E7-80E0-A347E71E51F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05E5FBBA-724B-43E7-80E0-A347E71E51F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05E5FBBA-724B-43E7-80E0-A347E71E51F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{578C5276-E902-4CEB-9AF3-D1AEEE375F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{578C5276-E902-4CEB-9AF3-D1AEEE375F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{578C5276-E902-4CEB-9AF3-D1AEEE375F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{578C5276-E902-4CEB-9AF3-D1AEEE375F38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

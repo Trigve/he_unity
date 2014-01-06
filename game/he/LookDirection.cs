@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace he
 {
@@ -19,34 +22,34 @@ namespace he
 	{
 #region Operations
 		//! Convert Map.Direction to LookDirection.
-		public static LookDirection Convert(Map.Direction Dir)
+		public static LookDirection Convert(Direction Dir)
 		{
 			LookDirection direction = LookDirection.EAST;
 
 			switch(Dir)
 			{
-				case he.Map.Direction.EAST:
+				case he.Direction.EAST:
 					direction = LookDirection.EAST;
 					break;
-				case he.Map.Direction.NORTH:
+				case he.Direction.NORTH:
 					direction = LookDirection.NORTH;
 					break;
-				case he.Map.Direction.NORTH_EAST:
+				case he.Direction.NORTH_EAST:
 					direction = LookDirection.NORTHEAST;
 					break;
-				case he.Map.Direction.NORTH_WEST:
+				case he.Direction.NORTH_WEST:
 					direction = LookDirection.NORTHWEST;
 					break;
-				case he.Map.Direction.SOUTH:
+				case he.Direction.SOUTH:
 					direction = LookDirection.SOUTH;
 					break;
-				case he.Map.Direction.SOUTH_EAST:
+				case he.Direction.SOUTH_EAST:
 					direction = LookDirection.SOUTHEAST;
 					break;
-				case he.Map.Direction.SOUTH_WEST:
+				case he.Direction.SOUTH_WEST:
 					direction = LookDirection.SOUTHWEST;
 					break;
-				case he.Map.Direction.WEST:
+				case he.Direction.WEST:
 					direction = LookDirection.WEST;
 					break;
 			}

@@ -38,25 +38,36 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files (x86)\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AStarPathManager.cs" />
+    <Compile Include="AStarPathMap.cs" />
+    <Compile Include="CameraManager.cs" />
+    <Compile Include="IAssetDatabase.cs" />
+    <Compile Include="ISerializePostProcessable.cs" />
+    <Compile Include="LevelManager.cs" />
     <Compile Include="MonoBehaviourEx.cs" />
+    <Compile Include="NonMoveableObjectComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoldierManager.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteManager.cs" />
+    <Compile Include="TerrainManager.cs" />
+    <Compile Include="TerrainPartition.cs" />
     <Compile Include="UnitSoldierController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\he\he.csproj">
       <Project>{407573AE-80D1-46A1-A2BA-9DB4B5F06977}</Project>
       <Name>he</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\utils\utils.csproj">
+      <Project>{578C5276-E902-4CEB-9AF3-D1AEEE375F38}</Project>
+      <Name>utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

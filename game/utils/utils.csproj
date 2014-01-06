@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{407573AE-80D1-46A1-A2BA-9DB4B5F06977}</ProjectGuid>
+    <ProjectGuid>{578C5276-E902-4CEB-9AF3-D1AEEE375F38}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>he</RootNamespace>
-    <AssemblyName>he</AssemblyName>
+    <RootNamespace>utils</RootNamespace>
+    <AssemblyName>utils</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -36,40 +36,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files (x86)\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AStarPath.cs" />
-    <Compile Include="Direction.cs" />
-    <Compile Include="ITerrainManager.cs" />
-    <Compile Include="LookDirection.cs" />
-    <Compile Include="NonMoveableObject.cs" />
-    <Compile Include="NonMoveableObjectHandle.cs" />
+    <Compile Include="MeshCombiner.cs" />
+    <Compile Include="MonoSingleton.cs" />
+    <Compile Include="PrefabManager.cs" />
+    <Compile Include="PriorityQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TerrainMaterialManager.cs" />
-    <Compile Include="TerrainTile.cs" />
-    <Compile Include="TerrainTileHandle.cs" />
-    <Compile Include="TerrainTileProperty.cs" />
-    <Compile Include="TerrainTileSet.cs" />
-    <Compile Include="TerrainTileSplat.cs" />
-    <Compile Include="TextureAtlasInfo.cs" />
-    <Compile Include="Unit.cs" />
-    <Compile Include="UnitSoldier.cs" />
-    <Compile Include="UnitSpriteAnimationDescription.cs" />
-    <Compile Include="UnitSpriteAnimationFrameDescription.cs" />
-    <Compile Include="UnitSpriteAnimationOrientationDescription.cs" />
-    <Compile Include="UnitSpriteDescription.cs" />
-    <Compile Include="UnitSpriteManager.cs" />
-    <Compile Include="UnitSpriteTypeDescription.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\utils\utils.csproj">
-      <Project>{578C5276-E902-4CEB-9AF3-D1AEEE375F38}</Project>
-      <Name>utils</Name>
-    </ProjectReference>
+    <Compile Include="TaskManager.cs" />
+    <Compile Include="Tuple.cs" />
+    <Compile Include="Vector3Helper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

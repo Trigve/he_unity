@@ -2,10 +2,11 @@
 
 namespace he
 {
+	//! Soldier unit.
 	public class UnitSoldier : Unit
 	{
 #region Construction
-		public UnitSoldier(TilePosition Pos)
+		public UnitSoldier(TerrainTileHandle Pos)
 			: base(Pos)
 		{}
 #endregion

@@ -1,24 +1,31 @@
 using UnityEngine;
 using System.Collections;
 
-public class UnitSoldierController : MonoBehaviour
+namespace he.script
 {
-#region Attributes
-	//! Terrain manager.
-	public he.ITerrainManager terrainManager;
-	//! Soldier.
-	public he.UnitSoldier soldier;
-	//! Sprite.
-	public Sprite sprite;
+	public class UnitSoldierController : MonoBehaviour
+	{
+#region Fields
+		//! Terrain manager.
+//		private TerrainManager m_TerrainManager;
+		//! Soldier.
+		private UnitSoldier m_Soldier;
+		//! Sprite.
+		//	public Sprite sprite;
+#endregion
+
+#region Properties
+		public UnitSoldier soldier { get { return m_Soldier; } set { m_Soldier = value; } }
 #endregion
 
 #region Operations
-	void Start()
-	{
-		// Set position
-		transform.position = terrainManager.GetPosition(soldier.position.tile);
-		// Update sprite position
-		sprite.Transform();
-	}
+		void Start()
+		{
+			// Set position
+//			transform.position = m_TerrainManager.GetPosition(m_Soldier.position.tile);
+			// Update sprite position
+			//		sprite.Transform();
+		}
 #endregion
+	}
 }
