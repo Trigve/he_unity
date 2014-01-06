@@ -89,7 +89,6 @@ public class MapWindow : EditorWindow
 			// Material manager
 			var material_manager = new he.TerrainMaterialManager(Application.dataPath);
 			
-//			string asset_parent_path = "Assets/Resources/Scenes";
 			string asset_parent_path = "Assets/Scenes";
 			string asset_path = GetCurrentScenePath();
 			// Be sure asset path exist
